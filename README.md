@@ -64,7 +64,7 @@ _Importate tener los puertos 7000 y 8000 libres para la ejecucion de los 2 micro
 ## Construido con 🛠️
 
 * [Maven](https://maven.apache.org/) - Manejador de dependencias
-* [Spring Boot]([https://rometools.github.io/rome/](https://spring.io/projects/spring-boot)) - FrameWork
+* [Spring Boot](https://spring.io/projects/spring-boot) - FrameWork
 
 
 ## Autores ✒️
