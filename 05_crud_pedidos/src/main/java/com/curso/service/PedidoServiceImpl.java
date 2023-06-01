@@ -35,7 +35,6 @@ public class PedidoServiceImpl implements PedidoService {
 		List<ProductoAux> productoAux = Arrays.asList(template.getForObject(url + "producto", ProductoAux[].class));
 		for (ProductoAux producto : productoAux) {
 			if(producto.getCodigoProducto()== codigoPorducto) {
-				producto.setStock(stock);
 				template.postForLocation(url+"producto", producto);
 				break;
 			}
@@ -61,10 +60,12 @@ public class PedidoServiceImpl implements PedidoService {
 		List<ProductoAux> productos = Arrays.asList(template.getForObject(url + "producto", ProductoAux[].class));
 
 		for (ProductoAux productoId : productos) {
-			if(productoId.getCodigoProducto()==pedido.getCodigoProducto()) {
+			if(productoId.getCodigoProducto()==pedido.getCodigoProducto() && productoId.getStock() >= pedido.getUnidades()) {
 				Date date = Date.from(Instant.now());
 				pedido.setTotal(pedido.getUnidades()*productoId.getPrecioUnitario());
 				pedido.setFechaPedido(date);
+				productoId.setStock(productoId.getStock()-pedido.getUnidades());
+				template.postForLocation(url+"producto", productoId);
 				dao.save(pedido);
 			}
 		}
