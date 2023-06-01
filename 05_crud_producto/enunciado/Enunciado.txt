@@ -1,0 +1,22 @@
+productos
+codigoProducto int(11) Primary key, Not null,
+producto            varchar(45)
+precioUnitario   double
+stock                  int(11)
+
+
+pedidos
+idPedido		int(11)
+codigoProducto	int(11)
+unidades		int(11)
+total		double
+fechaPedido	datetime
+
+Microservicio productos:
+1- Mostrar todos los productos 
+2- Actualizar el stock de un producto ( en la url se pasa el código del producto y las unidades)
+3-Obtener el precio de un producto
+
+Microservicio pedidos:
+1- Dar de alta un pedido
+2-Mostrar los pedidos
